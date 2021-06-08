@@ -3,12 +3,14 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const types = require('./routes/getPokemonByType')
 const pokemon = require('./routes/pokemons')
+const byId= require('./routes/getPokemonByID')
+const byName= require('./routes/getPokemonByName')
 
 const router = Router();
 
 router.use('/types', types)
 router.use('/pokemon', pokemon)
-
+//router.use('/pokemon/:id', byId)
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 

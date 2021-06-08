@@ -4,12 +4,15 @@ const { Type } = require("../../db.js");
 const router = Router();
 
 
-router.get("/", async (req, res) => {
 
-let types= Type.findAll({ attributes: ["name"] })
-console.log(types, "TIPOSSSS")
+
+router.get("/:id", async (req, res) => {
+let id = rep.params
+pokemon= await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+console.log(pokemon.dataValues, "TIPOSSSS")
 res.send("holi")
   });
+
 
 //   router.get('/', async function(req, res){
 //     let typesArray = [];
