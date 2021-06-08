@@ -3,18 +3,21 @@ const { Router } = require("express");
 const { Type } = require("../../db.js");
 const router = Router();
 
-router.get("/", (req, res) => {
-    var array=[]
-  Type.findAll({ attributes: ["id"] }).then((types) => {
-    array.push(types)})
-    console.log(array)
-    if (array) {
-      axios.get("https://pokeapi.co/api/v2/type").then((response) => {
-        response.data.results.map((type) => Type.create({ name: `${type.name}` }));
-        res.send('termine');
-      });
-    }
-  });
-
+router.get("/", async (req, res) => {
+  let typesArray = [];
+  const typesRaw = await Type.findAll({ attributes: ["name"] });
+  typesRaw.map((type) => typesArray.push(type.dataValues.name));
+  res.send(typesArray);
+});
 
 module.exports = router;
+
+// router.get("/", (req, res) => {
+//   let typesArray = [];
+//   Type.findAll({ attributes: ["name"] })
+//   .then(response=> response.map(type => typesArray.push(type.dataValues.name)))
+//   .then(()=>console.log( typesArray, "TYPESSSSS"))
+//   .then(()=>res.send(typesArray))
+//   });
+
+// module.exports = router;
