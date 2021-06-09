@@ -5,9 +5,9 @@ const router = Router();
 
 
 router.get("/", async (req, res) => {
-  if(req.query.name===undefined){
+  if(!req.query.name){
     let pokemons = [];
-    for (let i = 1; i < 13; i++) { 
+    for (let i = 1; i < 41; i++) { 
       let eachPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
       pokemonMain = {
         name: eachPokemon.data.name,
@@ -35,16 +35,12 @@ router.get("/", async (req, res) => {
     };
     res.json(pokemon);
   } catch (error) {
-    try {
       pokemonDb = await Pokemon.findOne({where: { name: name }});
       if (pokemonDb === null) {
         return res.status(404).send("pokemon no encontrado");
       } else {
         res.json(pokemonDb);
       };
-    } catch (error) {
-      res.status(404).send("pokemon no encontrado"); ///nunca llegará a esta linea ¿es necesario el catch?
-    }
   }
   }
 });

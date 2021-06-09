@@ -12,12 +12,3 @@ router.get("/", async (req, res) => {
 
 module.exports = router;
 
-// router.get("/", (req, res) => {
-//   let typesArray = [];
-//   Type.findAll({ attributes: ["name"] })
-//   .then(response=> response.map(type => typesArray.push(type.dataValues.name)))
-//   .then(()=>console.log( typesArray, "TYPESSSSS"))
-//   .then(()=>res.send(typesArray))
-//   });
-
-// module.exports = router;

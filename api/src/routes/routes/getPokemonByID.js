@@ -1,6 +1,5 @@
 const axios = require("axios").default;
 const { Router } = require("express");
-const { Type } = require("../../db.js");
 const router = Router();
 const { Pokemon } = require("../../db.js");
 
@@ -22,16 +21,12 @@ router.get("/:id", async (req, res) => {
     };
     res.json(pokemon);
   } catch (error) {
-    try {
       let pokemonDb = await Pokemon.findOne({ where: { id: id } });
       if (pokemonDb === null) {
         return res.status(404).send("pokemon no encontrado");
       } else {
         res.json(pokemonDb);
       }
-    } catch (error) {
-      console.log(error);
-    }
   }
 });
 

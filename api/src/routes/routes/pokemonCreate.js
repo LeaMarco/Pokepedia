@@ -6,7 +6,6 @@ const router = Router();
 var idCounter=100000
 
 router.post("/", async (req, res) => {
-  console.log(req.body, "BODYYY")
   if (req.body.name !== undefined) {
     await Pokemon.create({
       name: `${req.body.name}`,

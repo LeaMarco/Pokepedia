@@ -9,35 +9,27 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-    },
-    globalId:{
-      type: DataTypes.TEXT,
-    },
-    Hp: {
+    hp: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    Attack: {
+    attack: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    Defense: {
+    defense: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    Speed: {
+    speed: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    Height: {
+    height: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    Speed: {
+    speed: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
