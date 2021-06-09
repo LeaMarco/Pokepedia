@@ -84,15 +84,25 @@ router.get("/:name", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
-  axios
-    .get("https://pokeapi.co/api/v2/pokemon", {
-      params: {
-        limit: 12,
-        //offset: 50
-      },
-    })
-    .then((response) => res.json(response.data.results));
+router.get("/", (req, res) => {
+  let pokemons=[]
+  for (let i = 1; i < 5; i++) {
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
+    .then(response=> {pokemons.push(response.data.name),console.log(pokemons, "POKEMONS")})
+  }
+  setTimeout(()=>console.log(pokemons, "POKEMONS5555555555555555555555555558888888888888888888"), 300) 
+
+
+  
+  // axios
+  //   .get("https://pokeapi.co/api/v2/pokemon", {
+  //     params: {
+  //       limit: 12,
+  //       //offset: 50
+  //     },
+  //   })
+    // .then((response) => res.json(response.data.results));
+    res.send("holi")
 });
 
 module.exports = router;
