@@ -29,7 +29,7 @@ router.get("/:id", async (req, res) => {
   try {
     console.log("entré acá 1")
     pokemonApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    pokemon = {
+    let pokemon = {
       img: pokemonApi.data.sprites.other.dream_world.front_default,
       name: pokemonApi.data.name,
       types: pokemonApi.data.types.map((element) => element.type.name),
@@ -41,12 +41,12 @@ router.get("/:id", async (req, res) => {
       height: pokemonApi.data.height,
       weight: pokemonApi.data.weight,
     };
-    console.log(pokemon, "POKEMON!");
     res.json(pokemon);
   } catch (error) {
     try {
       console.log("entré acá 2")
-      pokemonDb = await Pokemon.findByPk(id);
+      let pokemonDb = await Pokemon.findOne({ where: {id: 10000} });
+      
       res.json(pokemonDb)
     } catch (error) {
       console.log("entré acá 3")
