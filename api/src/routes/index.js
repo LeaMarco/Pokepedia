@@ -9,8 +9,8 @@ const byName= require('./routes/getPokemonByName')
 const router = Router();
 
 router.use('/types', types)
+//router.use('/pokemon', byId)
 router.use('/pokemon', pokemon)
-//router.use('/pokemon/:id', byId)
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 

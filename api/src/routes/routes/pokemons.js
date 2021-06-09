@@ -23,20 +23,11 @@ router.post("/", (req, res) => {
   }
 });
 
-// router.get("/", async (req, res) => {
-//   axios
-//     .get("https://pokeapi.co/api/v2/pokemon", {
-//       params: {
-//         limit: 12,
-//         //offset: 50
-//       },
-//     })
-//     .then((response) => res.json(response.data.results));
-// });
 
 router.get("/:id", async (req, res) => {
   let id = req.params.id;
   try {
+    console.log("entré acá 1")
     pokemonApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
     pokemon = {
       img: pokemonApi.data.sprites.other.dream_world.front_default,
@@ -54,10 +45,12 @@ router.get("/:id", async (req, res) => {
     res.json(pokemon);
   } catch (error) {
     try {
+      console.log("entré acá 2")
       pokemonDb = await Pokemon.findByPk(id);
       res.json(pokemonDb)
     } catch (error) {
-      res.send("pokemon no encontrado")
+      console.log("entré acá 3")
+      res.send("pokemon no encontradoooooooo")
     }
   }
 });
@@ -81,23 +74,34 @@ router.get("/", async (req, res) => {
     res.json(pokemon)
   } catch (error) {
     try {
-      pokemonDb = await Pokemon.findAll({ where: {id: 10000} });
-      res.json(pokemonDb) 
+      pokemonDb = await Pokemon.findAll({ attributes: ['name'] });
+      res.send("hola") 
     } catch (error) {
       res.send("pokemon no encontrado")
     }
   }
 });
 
+router.get("/", async (req, res) => {
+  axios
+    .get("https://pokeapi.co/api/v2/pokemon", {
+      params: {
+        limit: 12,
+        //offset: 50
+      },
+    })
+    .then((response) => res.json(response.data.results));
+});
+
 module.exports = router;
 
 //   router.post('/', function(req, res){
-//     if (req.body.name !== undefined && req.body.resume !== undefined && req.body.puntuation !== undefined){
-//         Recipe.create({
-//             name:${req.body.name},
-//             resume:${req.body.resume},
-//             puntuation:${req.body.puntuation},
-//         })
+  //     if (req.body.name !== undefined && req.body.resume !== undefined && req.body.puntuation !== undefined){
+    //         Recipe.create({
+      //             name:${req.body.name},
+      //             resume:${req.body.resume},
+      //             puntuation:${req.body.puntuation},
+      //         })
 //         res.send("Nunca taxi")
 //     }
 //     else{
