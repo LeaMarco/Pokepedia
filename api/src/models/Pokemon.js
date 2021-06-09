@@ -13,7 +13,9 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+    },
+    globalId:{
+      type: DataTypes.TEXT,
     },
     Hp: {
       type: DataTypes.INTEGER,
@@ -39,6 +41,6 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-  },{initialAutoIncrement: 2000});
+  },);
   
 };
