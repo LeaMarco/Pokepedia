@@ -45,42 +45,44 @@ router.get("/:id", async (req, res) => {
   } catch (error) {
     try {
       console.log("entré acá 2")
-      let pokemonDb = await Pokemon.findOne({ where: {id: 10000} });
-      
-      res.json(pokemonDb)
+      let pokemonDb = await Pokemon.findOne({ where: {id: id} });
+        if(pokemonDb===null){
+          return res.send("pokemon no encontradoooooooo")
+        } else{
+          res.json(pokemonDb)
+        }
     } catch (error) {
-      console.log("entré acá 3")
-      res.send("pokemon no encontradoooooooo")
+      console.log(error)
     }
   }
 });
 
-// router.get("/", async (req, res) => {
-//   let name = req.query.name
-//   try {
-//     pokemonApi= await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-//     pokemon = {
-//       img: pokemonApi.data.sprites.other.dream_world.front_default,
-//       name: pokemonApi.data.name,
-//       types: pokemonApi.data.types.map(element => element.type.name),
-//       id: pokemonApi.data.id,
-//       hp: pokemonApi.data.stats[0].base_stat,
-//       attack: pokemonApi.data.stats[1].base_stat,
-//       defense: pokemonApi.data.stats[2].base_stat,
-//       speed: pokemonApi.data.stats[5].base_stat,
-//       height: pokemonApi.data.height,
-//       weight: pokemonApi.data.weight,
-//     }
-//     res.json(pokemon)
-//   } catch (error) {
-//     try {
-//       pokemonDb = await Pokemon.findAll({ attributes: ['name'] });
-//       res.send("hola") 
-//     } catch (error) {
-//       res.send("pokemon no encontrado")
-//     }
-//   }
-// });
+router.get("/:name", async (req, res) => {
+  let name = req.query.name
+  try {
+    pokemonApi= await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    pokemon = {
+      img: pokemonApi.data.sprites.other.dream_world.front_default,
+      name: pokemonApi.data.name,
+      types: pokemonApi.data.types.map(element => element.type.name),
+      id: pokemonApi.data.id,
+      hp: pokemonApi.data.stats[0].base_stat,
+      attack: pokemonApi.data.stats[1].base_stat,
+      defense: pokemonApi.data.stats[2].base_stat,
+      speed: pokemonApi.data.stats[5].base_stat,
+      height: pokemonApi.data.height,
+      weight: pokemonApi.data.weight,
+    }
+    res.json(pokemon)
+  } catch (error) {
+    try {
+      pokemonDb = await Pokemon.findAll({ attributes: ['name'] });
+      res.send("hola") 
+    } catch (error) {
+      res.send("pokemon no encontrado")
+    }
+  }
+});
 
 router.get("/", async (req, res) => {
   axios
