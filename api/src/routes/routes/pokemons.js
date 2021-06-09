@@ -7,7 +7,7 @@ const router = Router();
 router.get("/", async (req, res) => {
   if(req.query.name===undefined){
     let pokemons = [];
-    for (let i = 1; i < 41; i++) { 
+    for (let i = 1; i < 13; i++) { 
       let eachPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
       pokemonMain = {
         name: eachPokemon.data.name,
