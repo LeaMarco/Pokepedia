@@ -4,12 +4,9 @@ const { Type } = require("../../db.js");
 const router = Router();
 const { Pokemon } = require("../../db.js");
 
-
-
 router.get("/:id", async (req, res) => {
   let id = req.params.id;
   try {
-    console.log("entré acá 1");
     pokemonApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
     let pokemon = {
       img: pokemonApi.data.sprites.other.dream_world.front_default,
@@ -26,10 +23,9 @@ router.get("/:id", async (req, res) => {
     res.json(pokemon);
   } catch (error) {
     try {
-      console.log("entré acá 2");
-      let pokemonDb = await Pokemon.findOne({ where: { globalId: id } });
+      let pokemonDb = await Pokemon.findOne({ where: { id: id } });
       if (pokemonDb === null) {
-        return res.send("pokemon no encontradoooooooo");
+        return res.status(404).send("pokemon no encontrado");
       } else {
         res.json(pokemonDb);
       }
@@ -38,7 +34,5 @@ router.get("/:id", async (req, res) => {
     }
   }
 });
-
-
 
 module.exports = router;
