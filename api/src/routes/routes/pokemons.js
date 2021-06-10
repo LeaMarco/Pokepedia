@@ -7,7 +7,7 @@ const router = Router();
 router.get("/", async (req, res) => {
   if(!req.query.name){
     let pokemons = [];
-    for (let i = 1; i < 41; i++) { 
+    for (let i = 1; i < 1; i++) { 
       let eachPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
       pokemonMain = {
         name: eachPokemon.data.name,
@@ -16,6 +16,11 @@ router.get("/", async (req, res) => {
       };
       pokemons.push(pokemonMain);
     }
+    var PokemonsFromDb= await Pokemon.findAll({attributes: ['name']})  //traer los pokemons de la bd
+    var namestypes= PokemonsFromDb.map(poke=> [poke.dataValues]) // map para trabajar en cada pokemon
+    console.log(namestypes, "HOLAAAAAAA")// ese de la bd filtrar 3 prop
+    // agregarle el tipo 
+    // pushearlo en el array
     res.json(pokemons);
   } else {
     let name = req.query.name;
