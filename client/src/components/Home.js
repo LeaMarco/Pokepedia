@@ -20,7 +20,7 @@ const dispatch = useDispatch();
       {Array.isArray(pokemons) ? (
         <div className={styles.contenedor}>
           {pokemons.map((pokemon) => (
-            <Card name={pokemon.name} type={pokemon.type} img={pokemon.img}></Card>
+            <Card name={pokemon.name} type={pokemon.types} img={pokemon.img}></Card>
             // <div>
             // <h1 key={pokemon.name}>{pokemon.name}</h1> 
             // <img key={pokemon.name} src={pokemon.img} style={{maxWidth:'100px',maxHeigth:'100px'}}></img>
