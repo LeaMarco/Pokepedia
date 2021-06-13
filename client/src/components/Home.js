@@ -4,7 +4,8 @@ import { findPokemons } from "../actions/index";
 import { Link } from "react-router-dom";
 import CardsContainer from "./CardsContainer";
 import store from "../store";
-
+import Card from "./Card"
+import styles from "./Home.module.css"
 function Home({pokemons}) {
 const dispatch = useDispatch();
   // const pokemons = useSelector(state => state.pokemons);
@@ -17,12 +18,13 @@ const dispatch = useDispatch();
   return (
     <div>
       {Array.isArray(pokemons) ? (
-        <div>
+        <div className={styles.contenedor}>
           {pokemons.map((pokemon) => (
-            <div>
-            <h1 key={pokemon.name}>{pokemon.name}</h1> 
-            <img key={pokemon.name} src={pokemon.img} style={{maxWidth:'100px',maxHeigth:'100px'}}></img>
-            </div>
+            <Card name={pokemon.name} type={pokemon.type} img={pokemon.img}></Card>
+            // <div>
+            // <h1 key={pokemon.name}>{pokemon.name}</h1> 
+            // <img key={pokemon.name} src={pokemon.img} style={{maxWidth:'100px',maxHeigth:'100px'}}></img>
+            // </div>
           ))}
         </div>
       ) : (
