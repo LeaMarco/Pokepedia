@@ -5,16 +5,17 @@ import {
     FIND_POKEMONS_BY_NAME,
   } from "../actions/actionNames";
 
-  const initialState={pokemons: undefined}
+  const initialState={pokemons: 1232}
 
-  export default function reducer(state=initialState, action){
+  export default (state=initialState, action)=>{
     switch(action.type){
         case FIND_POKEMON: {
             return{
                 ...state, pokemons: action.payload
             }
         }
-    }
+        default: return state;
+    } 
         
   }
 

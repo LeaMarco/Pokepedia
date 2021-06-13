@@ -1,29 +1,40 @@
-import {React, useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {findPokemons} from '../actions/index'
-import {Link} from 'react-router-dom'
+import { React, useEffect } from "react";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { findPokemons } from "../actions/index";
+import { Link } from "react-router-dom";
+import CardsContainer from "./CardsContainer";
+import store from "../store";
 
-function Home() {
-    const dispatch = useDispatch()
-    const pokemons = useSelector(state => state.pokemons)
-    useEffect(()=>{
-        dispatch(findPokemons())
-    }, [])
-    console.log(pokemons)
-    
-    return (
-             <div>
-             <ul>
-                 {
-                     Array.isArray(pokemons) ? pokemons.map(pokemon => (
-                         <li >
-                             <Link to="">{pokemon.name}</Link>
-                         </li>
-                     )): <h1>Cargando...</h1>
-                 }
-             </ul>
-         </div>
-    )
+function Home({pokemons}) {
+const dispatch = useDispatch();
+  // const pokemons = useSelector(state => state.pokemons);
+  
+  useEffect(() => {
+    dispatch(findPokemons());
+  }, []);
+  console.log(pokemons);
+
+  return (
+    <div>
+      {Array.isArray(pokemons) ? (
+        <div>
+          {pokemons.map((pokemon) => (
+            <div>
+            <h1 key={pokemon.name}>{pokemon.name}</h1> 
+            <img key={pokemon.name} src={pokemon.img} style={{maxWidth:'100px',maxHeigth:'100px'}}></img>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <h1>Cargando...</h1>
+      )}
+    </div>
+  );
 }
 
-export default Home
+function mapStateToProps(state){
+  return {pokemons: state.pokemons}
+}
+
+
+export default connect(mapStateToProps)(Home);

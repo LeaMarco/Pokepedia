@@ -1,0 +1,27 @@
+.background {
+  background-image: url("https://cdn.wallpapersafari.com/28/80/8jBNd2.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.background a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.holi {
+  color: rgba(255, 0, 0, 0.377);
+  text-align: center;
+  margin: 80vh;
+}
+
+.holi:hover {
+  color: rgba(255, 0, 0, 0.932);
+  text-shadow: 2px 2px 12px #a40000;
+  transition: 400ms;
+  transform: scale(1.1);
+}
