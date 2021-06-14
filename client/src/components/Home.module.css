@@ -1,6 +1,14 @@
-.contenedor{
-    display: grid;
-  grid-template-columns: repeat(3,1fr);
-  grid-auto-rows: 200px;
-  grid-gap: 20px;
+.contenedor {
+  margin-top: 20px;
+  margin-left: 10%;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 25px;
+}
+
+.loading{
+  position: absolute;
+  margin-top: 20%;
+  margin-left: 50%;
 }

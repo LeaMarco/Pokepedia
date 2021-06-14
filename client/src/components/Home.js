@@ -6,9 +6,12 @@ import CardsContainer from "./CardsContainer";
 import store from "../store";
 import Card from "./Card"
 import styles from "./Home.module.css"
-function Home({pokemons}) {
+import Spinner from "./Loader"
+
+
+export default function Home() {
 const dispatch = useDispatch();
-  // const pokemons = useSelector(state => state.pokemons);
+const pokemons = useSelector(state => state.pokemons);
   
   useEffect(() => {
     dispatch(findPokemons());
@@ -19,24 +22,17 @@ const dispatch = useDispatch();
     <div>
       {Array.isArray(pokemons) ? (
         <div className={styles.contenedor}>
-          {pokemons.map((pokemon) => (
-            <Card name={pokemon.name} type={pokemon.types} img={pokemon.img}></Card>
-            // <div>
-            // <h1 key={pokemon.name}>{pokemon.name}</h1> 
-            // <img key={pokemon.name} src={pokemon.img} style={{maxWidth:'100px',maxHeigth:'100px'}}></img>
-            // </div>
+          {pokemons.map(({name, types, img}) => (
+            <Card name={name} type={types} img={img}/>
           ))}
         </div>
       ) : (
-        <h1>Cargando...</h1>
+        <div className={styles.loading}>
+
+          <Spinner/>
+        </div>
       )}
     </div>
   );
 }
 
-function mapStateToProps(state){
-  return {pokemons: state.pokemons}
-}
-
-
-export default connect(mapStateToProps)(Home);
