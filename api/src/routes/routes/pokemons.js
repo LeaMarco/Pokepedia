@@ -7,17 +7,12 @@ const router = Router();
 router.get("/", async (req, res) => {
   if(!req.query.name){
     let pokemons = [];
-    // for (let i = 1; i < 5; i++) { //////////////CAMBIAR MAS ADELANTE
-    //   let eachPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
-    //   pokemonMain = {
-    //     name: eachPokemon.data.name,
-    //     img: eachPokemon.data.sprites.other.dream_world.front_default,
-    //     types: eachPokemon.data.types.map((element) => element.type.name),
-    //   };
-    var pokemonsApi= await axios.get("https://pokeapi.co/api/v2/pokemon/")
-    var pokemonsUrls= pokemonsApi.data.results.map(pokemon => pokemon.url)
+    pokemonsUrls=[]
+    for (let i = 1; i < 180; i++) {
+      pokemonsUrls.push(`https://pokeapi.co/api/v2/pokemon/${i}`)
+    }
     var responses= await Promise.all(pokemonsUrls.map(pokemon => axios.get(pokemon)))
-    var pokemonsApiFinal= responses.map(pokemon => {
+    responses.map(pokemon => {
       var pokemonMain = {
             name: pokemon.data.name,
             img: pokemon.data.sprites.other.dream_world.front_default,
