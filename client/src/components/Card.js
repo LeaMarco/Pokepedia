@@ -72,6 +72,9 @@ export default function Card({
           <h3 className={p.type}>{type.join(", ")}</h3>
         </div>
       </div>
+
+
+      
     </div>
   );
 }

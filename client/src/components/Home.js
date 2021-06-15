@@ -39,9 +39,24 @@ export default function Home() {
     }
   }
   var nextPage=()=>{
-    if(firstPokemon<1000){
+    if(firstPokemon<1117){
       setFirstPokemon(firstPokemon+12)
       dispatch(findPokemons(firstPokemon+12))
+    }
+  }
+  var previousPageUltra=()=>{
+    if(firstPokemon>120){
+      setFirstPokemon(firstPokemon-120)
+      dispatch(findPokemons(firstPokemon-120))
+    } else {
+      setFirstPokemon(1)
+      dispatch(findPokemons(1))
+    }
+  }
+  var nextPageUltra=()=>{
+    if(firstPokemon<1081){
+      setFirstPokemon(firstPokemon+120)
+      dispatch(findPokemons(firstPokemon+120))
     }
   }
 
@@ -77,9 +92,10 @@ export default function Home() {
               <Card name={name} type={types} img={img} />
             ))}
           </div>
+          <button onClick={previousPageUltra}>Previous x10</button>
           <button onClick={previousPage}>Previous</button>
-          
           <button onClick={nextPage}>Next</button>
+          <button onClick={nextPageUltra}>Next x10</button>
         </div>
       ) : (
         <div className={styles.loading}>

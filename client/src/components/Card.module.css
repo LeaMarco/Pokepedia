@@ -2,11 +2,13 @@
 .datos {
   margin-left: 20px;
   font-family: 'Abel', sans-serif;
+  text-shadow: 2px 2px 2px rgba(255,255,255,0.7);
 }
 
 .typeTitle {
   position: absolute;
   margin-top: 5px;
+  z-index: 10;
 }
 .type {
   position: absolute;
@@ -168,6 +170,8 @@ border-top-right-radius: 2rem;
   /* transform: rotate(15deg) translateX(200px); */
   transform: scale(1.2) rotate(2deg);
   /* transform: rotateY(10deg); */
+  /* transform: perspective(800px);
+  transform-style: preserve-3d; */
   transition: 400ms;
 }
 .carta:hover img{
