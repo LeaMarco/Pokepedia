@@ -11,14 +11,44 @@ import Spinner from "./Loader";
 export default function Home() {
   const dispatch = useDispatch();
   const pokemons = useSelector((state) => state.pokemons);
-  const [currentPage, setCurrentPage] = useState(0)
   const [search, setSearch] = useState("")
 
+
+  ///////////////////CAMBIO DE PAGINAS TRAYENDO "TODO" DE LA API////////////
+  // const [currentPage, setCurrentPage] = useState(0) 
+
+  // var previousPage=()=>{
+  //   if(currentPage>0){
+  //     setCurrentPage(currentPage-12)
+
+  //   }
+  // }
+  // var nextPage=()=>{
+  //   if(filteredPokemons().length>5){
+  //     setCurrentPage(currentPage+12)
+  //   }
+  // }
+
+///////////////////CAMBIO DE PAGINA CON LLAMADOS INDIVIDUALES
+   const [currentPage, setCurrentPage] = useState(0) 
+
+  var previousPage=()=>{
+    if(currentPage>0){
+      setCurrentPage(currentPage-12)
+
+    }
+  }
+  var nextPage=()=>{
+    if(filteredPokemons().length>5){
+      setCurrentPage(currentPage+12)
+    }
+  }
+  
   useEffect(() => {
     dispatch(findPokemons());
   }, []);
   console.log(pokemons);
-
+  
   var filteredPokemons = () => {
     if(search.length===0){
       return pokemons.slice(currentPage, currentPage+12);
@@ -27,19 +57,7 @@ export default function Home() {
       return filtered.slice(currentPage, currentPage+12);
     }
   };
-
-  var previousPage=()=>{
-    if(currentPage>0){
-      setCurrentPage(currentPage-12)
-
-    }
-  }
-
-  var nextPage=()=>{
-    if(filteredPokemons().length>5){
-      setCurrentPage(currentPage+12)
-    }
-  }
+  
 
 
   var onSearchChange = ({target}) =>{
