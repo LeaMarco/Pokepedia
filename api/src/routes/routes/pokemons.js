@@ -8,7 +8,8 @@ router.get("/", async (req, res) => {
   if(!req.query.name){
     let pokemons = [];
     pokemonsUrls=[]
-    for (let i = 1; i < 180; i++) {
+    console.log(req.body, "PARAMS")
+    for (let i = 1; i < 13; i++) {
       pokemonsUrls.push(`https://pokeapi.co/api/v2/pokemon/${i}`)
     }
     var responses= await Promise.all(pokemonsUrls.map(pokemon => axios.get(pokemon)))
