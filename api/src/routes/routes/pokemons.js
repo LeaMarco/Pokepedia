@@ -4,19 +4,27 @@ const { Pokemon, Type } = require("../../db.js");
 const router = Router();
 
 
-router.get("/", async (req, res) => {
+
+router.post("/", async (req, res) => {
   if(!req.query.name){
     let pokemons = [];
     pokemonsUrls=[]
-    console.log(req.body, "PARAMS")
-    for (let i = 1; i < 13; i++) {
-      pokemonsUrls.push(`https://pokeapi.co/api/v2/pokemon/${i}`)
+    const {index} = req.body.params
+    console.log(index, "PARAMS")
+    if(index<1117) {var limit=index+12}
+    else {var limit=1118}
+    for (let i = index; i < limit; i++) {
+      if(i>898){pokemonsUrls.push(`https://pokeapi.co/api/v2/pokemon/${i+9102}`)}
+      else{pokemonsUrls.push(`https://pokeapi.co/api/v2/pokemon/${i}`)}
     }
     var responses= await Promise.all(pokemonsUrls.map(pokemon => axios.get(pokemon)))
     responses.map(pokemon => {
+      var imgDreamWorld = pokemon.data.sprites.other.dream_world.front_default
+      var imgOfficial = pokemon.data.sprites.other['official-artwork'].front_default
+      var imgFrontDefault = pokemon.data.sprites.front_default
       var pokemonMain = {
             name: pokemon.data.name,
-            img: pokemon.data.sprites.other.dream_world.front_default,
+            img: imgDreamWorld? imgDreamWorld : imgOfficial ? imgOfficial : imgFrontDefault,
             types: pokemon.data.types.map((element) => element.type.name),
           }; pokemons.push(pokemonMain)}
            )
