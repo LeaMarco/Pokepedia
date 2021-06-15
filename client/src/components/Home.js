@@ -35,16 +35,15 @@ export default function Home() {
   var previousPage=()=>{
     if(firstPokemon>1){
       setFirstPokemon(firstPokemon-12)
-      dispatch(findPokemons(firstPokemon))
+      dispatch(findPokemons(firstPokemon-12))
     }
   }
   var nextPage=()=>{
     if(firstPokemon<1000){
       setFirstPokemon(firstPokemon+12)
-      dispatch(findPokemons(firstPokemon))
+      dispatch(findPokemons(firstPokemon+12))
     }
   }
-  console.log(firstPokemon, "primer pokemonnn")
 
 
   useEffect(() => {

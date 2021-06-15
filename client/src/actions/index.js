@@ -8,7 +8,7 @@ import axios from 'axios'
 
 export function findPokemons(firstPokemon) {
   return (dispatch) => {
-    axios.get("http://localhost:3001/", {params:{index: firstPokemon}}).then((response) => {
+    axios.post("http://localhost:3001/", {params:firstPokemon?{index: firstPokemon}:{index: 1}}).then((response) => {
       dispatch({ type: FIND_POKEMON, payload: response.data });
     });
   };

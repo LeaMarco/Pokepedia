@@ -96,6 +96,13 @@ border-top-left-radius: 2rem;
 border-top-right-radius: 2rem;
 }
 
+.topSteel {
+  background-image: var(--steel);
+  height: 50px;
+border-top-left-radius: 2rem;
+border-top-right-radius: 2rem;
+}
+
 .topGhost {
   background-image: var(--ghost);
   height: 50px;
@@ -105,6 +112,13 @@ border-top-right-radius: 2rem;
 
 .topRock {
   background-image: var(--rock);
+  height: 50px;
+border-top-left-radius: 2rem;
+border-top-right-radius: 2rem;
+}
+
+.topFlying {
+  background-image: var(--flying);
   height: 50px;
 border-top-left-radius: 2rem;
 border-top-right-radius: 2rem;
