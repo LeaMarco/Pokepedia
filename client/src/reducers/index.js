@@ -14,6 +14,11 @@ import {
                 ...state, pokemons: action.payload
             }
         }
+        case CREATE_POKEMON: {
+            return{
+                ...state, pokemons: action.payload
+            }
+        }
         default: return state;
     } 
         

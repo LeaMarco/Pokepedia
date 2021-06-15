@@ -84,8 +84,7 @@ export default function Home() {
     <div>
       {Array.isArray(pokemons) ? (
         <div>
-          <img className={styles.logo} src="https://res.cloudinary.com/nsnc/image/upload/v1623695450/logo_copy_vkphgb.png"></img>
-          <hr/>
+          
           <input type="text" placeholder="buscar pokemon" value= {search} onChange={onSearchChange}></input>
           <div className={styles.contenedor}>
             {pokemons.map(({ name, types, img }) => (
