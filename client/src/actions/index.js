@@ -6,9 +6,9 @@ import {
 } from "./actionNames";
 import axios from 'axios'
 
-export function findPokemons() {
+export function findPokemons(firstPokemon) {
   return (dispatch) => {
-    axios.get("http://localhost:3001/").then((response) => {
+    axios.get("http://localhost:3001/", {params:{index: firstPokemon}}).then((response) => {
       dispatch({ type: FIND_POKEMON, payload: response.data });
     });
   };

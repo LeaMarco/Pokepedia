@@ -5,7 +5,7 @@ import {
     FIND_POKEMONS_BY_NAME,
   } from "../actions/actionNames";
 
-  const initialState={pokemons: 1232}
+  const initialState={pokemons: undefined}/////////////probar cambiar esto
 
   export default (state=initialState, action)=>{
     switch(action.type){

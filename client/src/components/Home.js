@@ -29,40 +29,42 @@ export default function Home() {
   //   }
   // }
 
-///////////////////CAMBIO DE PAGINA CON LLAMADOS INDIVIDUALES
-   const [currentPage, setCurrentPage] = useState(0) 
+///////////////////CAMBIO DE PAGINA CON LLAMADOS///////////
+   const [firstPokemon, setFirstPokemon] = useState(1) 
 
   var previousPage=()=>{
-    if(currentPage>0){
-      setCurrentPage(currentPage-12)
-
+    if(firstPokemon>1){
+      setFirstPokemon(firstPokemon-12)
+      dispatch(findPokemons(firstPokemon))
     }
   }
   var nextPage=()=>{
-    if(filteredPokemons().length>5){
-      setCurrentPage(currentPage+12)
+    if(firstPokemon<1000){
+      setFirstPokemon(firstPokemon+12)
+      dispatch(findPokemons(firstPokemon))
     }
   }
-  
+  console.log(firstPokemon, "primer pokemonnn")
+
+
   useEffect(() => {
     dispatch(findPokemons());
   }, []);
-  console.log(pokemons);
   
   var filteredPokemons = () => {
-    if(search.length===0){
-      return pokemons.slice(currentPage, currentPage+12);
-    } else {
-      const filtered= pokemons.filter(pokemon => pokemon.name.includes(search))
-      return filtered.slice(currentPage, currentPage+12);
-    }
+    // if(search.length===0){
+    //   return pokemons.slice(currentPage, currentPage+12);
+    // } else {
+    //   const filtered= pokemons.filter(pokemon => pokemon.name.includes(search))
+    //   return filtered.slice(currentPage, currentPage+12);
+    // }
   };
   
 
 
   var onSearchChange = ({target}) =>{
-    setCurrentPage(0)
-    setSearch(target.value)
+    // setCurrentPage(0)
+    // setSearch(target.value)
   }
   return (
     <div>
@@ -72,7 +74,7 @@ export default function Home() {
           <hr/>
           <input type="text" placeholder="buscar pokemon" value= {search} onChange={onSearchChange}></input>
           <div className={styles.contenedor}>
-            {filteredPokemons().map(({ name, types, img }) => (
+            {pokemons.map(({ name, types, img }) => (
               <Card name={name} type={types} img={img} />
             ))}
           </div>

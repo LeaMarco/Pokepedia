@@ -12,7 +12,6 @@ export default function Card({
   type = "fire",
   img = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg",
 }) {
-  console.log(type.includes("grass"), "TYPESSSSS")
   var topClass = p.topFire;
   // switch (type[0]) {
   //   case "fire":
