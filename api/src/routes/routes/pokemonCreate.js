@@ -20,6 +20,8 @@ router.post("/", async (req, res) => {
       Height: req.body.height !== undefined ? `${req.body.height}` : null,
       Weight: req.body.weight !== undefined ? `${req.body.weight}` : null,
     })
+
+
     conn.sync({alter:true}).then ( async ()=>{
       req.body.types.map(async tipo =>{
         var typeSelected= await Type.findOne({where: {name: tipo}})

@@ -7,8 +7,11 @@ router.get("/:id", async (req, res) => {
   let id = req.params.id;
   try {
     pokemonApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    var imgDreamWorld = pokemonApi.data.sprites.other.dream_world.front_default
+      var imgOfficial = pokemonApi.data.sprites.other['official-artwork'].front_default
+      var imgFrontDefault = pokemonApi.data.sprites.front_default
     let pokemon = {
-      img: pokemonApi.data.sprites.other.dream_world.front_default,
+      img: imgDreamWorld? imgDreamWorld : imgOfficial ? imgOfficial : imgFrontDefault,
       name: pokemonApi.data.name,
       types: pokemonApi.data.types.map((element) => element.type.name),
       id: pokemonApi.data.id,

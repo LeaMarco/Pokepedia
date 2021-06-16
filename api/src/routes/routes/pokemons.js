@@ -38,7 +38,8 @@ router.post("/", async (req, res) => {
         img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
         types: pokemon.types.map(type => type.name)
       }
-      pokemons.push(eachPokemonDB)
+      console.log(pokemons.length, "LENGTH")
+      if (pokemons.length<12) {pokemons.push(eachPokemonDB)}
     })
 
     res.json(pokemons);
