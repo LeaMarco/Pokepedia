@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { findPokemons } from "../actions/index";
-import { Link } from "react-router-dom";
 import CardsContainer from "./CardsContainer";
 import store from "../store";
 import Card from "./Card";
@@ -10,9 +9,10 @@ import Spinner from "./Loader";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const pokemons = useSelector((state) => state.pokemons);
+  let pokemons = useSelector((state) => state.pokemons);
   const [search, setSearch] = useState("")
-
+  console.log(pokemons, "POKEMONS////////////////////////////////////////////////")
+  
 
   ///////////////////CAMBIO DE PAGINAS TRAYENDO "TODO" DE LA API////////////
   // const [currentPage, setCurrentPage] = useState(0) 
@@ -39,6 +39,9 @@ export default function Home() {
     }
   }
   var nextPage=()=>{
+    // console.log("entré")
+    //   pokemons= null
+    //   console.log(pokemons,"salí")
     if(firstPokemon<1117){
       setFirstPokemon(firstPokemon+12)
       dispatch(findPokemons(firstPokemon+12))
@@ -84,19 +87,24 @@ export default function Home() {
     <div>
       {Array.isArray(pokemons) ? (
         <div>
-          
-          <input type="text" placeholder="buscar pokemon" value= {search} onChange={onSearchChange}></input>
           <div className={styles.contenedor}>
             {pokemons.map(({ name, types, img }) => (
               <Card name={name} type={types} img={img} />
             ))}
           </div>
+          <hr/>
+          <hr/>
           <button onClick={previousPageUltra}>Previous x10</button>
           <button onClick={previousPage}>Previous</button>
           <button onClick={nextPage}>Next</button>
           <button onClick={nextPageUltra}>Next x10</button>
         </div>
-      ) : (
+      )  : typeof pokemons === 'object'? (
+        <div className={styles.contenedor}>
+              <Card name={pokemons.name} type={pokemons.types} img={pokemons.img} />
+          </div>
+      )
+      : (
         <div className={styles.loading}>
           <Spinner />
         </div>

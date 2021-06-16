@@ -8,11 +8,13 @@ import "./App.css";
 import Create from "./components/Create";
 import NavBar from "./components/NavBar";
 import pokemonDetail from "./components/pokemonDetail";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
     <div>
         <NavBar/>
+        <Route exact path="/home" component={SearchBar} />
         <Route exact path="/card" component={Card} />
         <Route exact path="/home" component={home} />
         <Route exact path="/create" component={Create} />

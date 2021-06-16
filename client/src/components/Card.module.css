@@ -185,3 +185,8 @@ border-top-right-radius: 2rem;
   transition: 600ms;
 
 }
+
+.link{
+  text-decoration: none;
+  color:rgba(3, 3, 3, 1)
+}

@@ -1,5 +1,7 @@
 import React from "react";
 import p from "./Card.module.css";
+import { Link } from "react-router-dom";
+
 
 Object.defineProperty(String.prototype, "capitalOne", {
   value: function () {
@@ -55,26 +57,28 @@ export default function Card({
   }
 
   return (
-    <div className={p.carta}>
-      <div className={topClass}></div>
-      <div className={p.img}>
-        <img
-          key={name}
-          src={img}
-          style={{ maxWidth: "150px", maxHeight: "150px" }}
-        ></img>
-      </div>
+    <Link to={`/pokemons/${name}`} className={p.link}>
+        <div className={p.carta}>
+          <div className={topClass}></div>
+          <div className={p.img}>
+            <img
+              key={name}
+              src={img}
+              style={{ maxWidth: "150px", maxHeight: "150px", minHeight: "100px" }}
+            ></img>
+          </div>
 
-      <div className={p.datos}>
-        <h1>{name.capitalOne()}</h1>
-        <div >
-          <h5 className={p.typeTitle}>{typeTitle}</h5>
-          <h3 className={p.type}>{type.join(", ")}</h3>
+          <div className={p.datos}>
+            <h1>{name.capitalOne()}</h1>
+            <div >
+              <h5 className={p.typeTitle}>{typeTitle}</h5>
+              <h3 className={p.type}>{type.join(", ")}</h3>
+            </div>
+          </div>
+
+
+          
         </div>
-      </div>
-
-
-      
-    </div>
+    </Link>
   );
 }

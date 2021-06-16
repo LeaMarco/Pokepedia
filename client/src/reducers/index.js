@@ -19,6 +19,11 @@ import {
                 ...state, pokemons: action.payload
             }
         }
+        case FIND_POKEMONS_BY_ID: {
+            return{
+                ...state, pokemons: action.payload
+            }
+        }
         default: return state;
     } 
         
