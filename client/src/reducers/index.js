@@ -3,6 +3,7 @@ import {
     FIND_POKEMON,
     FIND_POKEMONS_BY_ID,
     FIND_POKEMONS_BY_NAME,
+    CLEAR_POKEMON
   } from "../actions/actionNames";
 
   const initialState={pokemons: undefined}/////////////probar cambiar esto
@@ -22,6 +23,11 @@ import {
         case FIND_POKEMONS_BY_ID: {
             return{
                 ...state, pokemons: action.payload
+            }
+        }
+        case CLEAR_POKEMON: {
+            return{
+                state: {pokemons: null}
             }
         }
         default: return state;

@@ -3,6 +3,7 @@ import {
   FIND_POKEMON,
   FIND_POKEMONS_BY_ID,
   FIND_POKEMONS_BY_NAME,
+  CLEAR_POKEMON,
 } from "./actionNames";
 import axios from 'axios'
 
@@ -43,4 +44,10 @@ export function createPokemon(payload) {
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };
+}
+
+export function clearPokemon() {
+  return (
+    {type: CLEAR_POKEMON}
+  );
 }
