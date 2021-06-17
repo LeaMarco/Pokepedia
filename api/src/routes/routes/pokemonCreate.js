@@ -24,8 +24,10 @@ console.log(req.body, "REQ BODYYYYY")
 
     conn.sync({alter:true}).then ( async ()=>{
       req.body.types.map(async tipo =>{
+        console.log("ENTRE ACÁ")
         var typeSelected= await Type.findOne({where: {name: tipo}})
         pokemonCreated.addType(typeSelected)
+        console.log(pokemonCreated.dataValues, "POKEMON CREADO")
       })
     })
     res.send("pokemon creado");

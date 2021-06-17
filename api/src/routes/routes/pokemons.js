@@ -2,57 +2,44 @@ const axios = require("axios").default;
 const { Router } = require("express");
 const { Pokemon, Type } = require("../../db.js");
 const router = Router();
-const { createPreviewPokemon } = require("./Utils/CreatePreviewPokemon");
 const { createFullPokemon } = require("./Utils/CreateFullPokemon");
+const { createFullPokemonDB } = require("./Utils/CreateFullPokemonDB");
+
 
 router.post("/", async (req, res) => {
   let pokemons = [];
-  pokemonsUrls = [];
-  const { type, pageNumber, order } = req.body;
+  let pokemonsUrls = [];
+  let PokemonsFromDb= [];
+  const { type, order } = req.body;
 
 
 //////////CREO EL ARRAY CON LAS URLS ///////////////////
   if (type=== "none" ) {
-    for (let i = 1; i < 1119; i++) {
-      if (i > 898) {
-        pokemonsUrls.push(`https://pokeapi.co/api/v2/pokemon/${i + 9102}`);
-      } else {
+    for (let i = 1; i < 41; i++) {
         pokemonsUrls.push(`https://pokeapi.co/api/v2/pokemon/${i}`);
-      }
   }} else {
     allTypeProperties= await axios.get(`https://pokeapi.co/api/v2/type/${type}`)
     pokemonsUrls= allTypeProperties.data.pokemon.map(element => element.pokemon.url)
+    pokemonsUrls.slice(1, 41) 
   }
   if(order===false) {pokemonsUrls.reverse()}
   ///////////////////////////////////////////////////////
-
-///////////////PAGINADO////////////////////////
-  lastPage= Math.ceil(pokemonsUrls.length/12)
-  console.log(lastPage, "laspage")
-
-  firstPokemon=(1+(12*(pageNumber-1)))
-  lastPokemon= pageNumber*12
-  actualPagePokemons=pokemonsUrls.slice(firstPokemon,lastPokemon+1)
-    
-  var responses = await Promise.all(actualPagePokemons.map((pokemon) => axios.get(pokemon))
+  
+  var responses = await Promise.all(pokemonsUrls.map((pokemon) => axios.get(pokemon))
       );
-      responses.map(async (pokemon) => {
-        var previewPokemon = await createPreviewPokemon(pokemon);
-        pokemons.push(previewPokemon);
+      responses.map( (pokemon) => {
+        var Pokemon = createFullPokemon(pokemon);
+        pokemons.push(Pokemon);
       });
     
-  var PokemonsFromDb = await Pokemon.findAll({ include: [Type] }); //traer los pokemons de la bd
+  PokemonsFromDb = await Pokemon.findAll({ include: [Type] }); //traer los pokemons de la bd
+  if(type!=="none") PokemonsFromDb= PokemonsFromDb.filter(pokemon=> pokemon.dataValues.types.map(t => t.dataValues.name).includes(type))
   PokemonsFromDb.map((pokemon) => {
-    var eachPokemonDB = {
-      name: pokemon.name,
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
-      types: pokemon.types.map((type) => type.name),
-    };
-    if (pokemons.length < 12) {
+    var eachPokemonDB = createFullPokemonDB(pokemon)
+      ;
       pokemons.push(eachPokemonDB);
-    }
   });
-  res.json([pokemons, lastPage]);
+  res.json(pokemons);
 });
 
 
