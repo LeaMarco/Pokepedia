@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
       Height: req.body.height !== undefined ? `${req.body.height}` : null,
       Weight: req.body.weight !== undefined ? `${req.body.weight}` : null,
     })
-
+console.log(req.body, "REQ BODYYYYY")
 
     conn.sync({alter:true}).then ( async ()=>{
       req.body.types.map(async tipo =>{
