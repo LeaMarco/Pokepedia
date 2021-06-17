@@ -31,7 +31,7 @@ export default function Create() {
   return ( 
     <form onSubmit={(e)=>handleSubmit(e)}>
           <input type="text" placeholder="Name" name="name" onChange={handleInputChange}></input>
-          <input type="text" placeholder="Hp" name="hp" onChange={handleInputChange}></input>
+          <input type="number" min="1" max="100" placeholder="Hp" name="hp" onChange={handleInputChange} required></input>
           <input type="text" placeholder="Attack" name="attack" onChange={handleInputChange}></input>
           <input type="text" placeholder="Defense" name="defense" onChange={handleInputChange}></input>
           <input type="text" placeholder="Speed" name="speed" onChange={handleInputChange}></input>
@@ -44,6 +44,20 @@ export default function Create() {
   );
 }
 
+{/* <input
+          type="number"
+          min="1"
+          max="100"
+          step="1"
+          name="puntuation"
+          key="puntuation"
+          className="input-puntuation"
+          autoComplete="off"
+          value={state.puntuation}
+          onChange={handleInputChange}
+          required
+        ></input>
+ */}
 
 
     

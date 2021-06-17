@@ -2,7 +2,7 @@ import React from "react";
 import p from "./Card.module.css";
 import { Link } from "react-router-dom";
 
-
+var pokeballImg= "https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png"
  function capitalOne(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);
 };
@@ -39,16 +39,19 @@ export default function Card({
   if (type.length > 1) {
     typeTitle = "Types:";
   }
+  var imgAnimation= p.imgStill
+  if(img===pokeballImg) imgAnimation= p.imgMovement 
 
   return (
     <Link to={`/pokemons/${name}`} className={p.link}>
         <div className={p.carta}>
           <div className={topClass}></div>
-          <div className={p.img}>
+          <div className={p.img } >
             <img
               key={name}
               src={img}
               style={{ maxWidth: "150px", maxHeight: "150px", minHeight: "100px" }}
+              className={imgAnimation}
             ></img>
           </div>
 

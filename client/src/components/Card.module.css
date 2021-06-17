@@ -161,7 +161,6 @@ border-top-right-radius: 2rem;
   position: absolute;
   margin-left: 185px;
   margin-top: -30px;
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
   transition: 400ms;
 
 }
@@ -189,4 +188,29 @@ border-top-right-radius: 2rem;
 .link{
   text-decoration: none;
   color:rgba(3, 3, 3, 1)
+}
+
+.imgStill {
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+
+}
+
+.imgMovement {
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+
+  animation: shake-baidu 2s ease 0s infinite;
+  animation-play-state: running;
+}
+.imgMovement:hover{
+  animation-play-state: running;
+}
+@keyframes shake-baidu {
+  from    { transform: rotate(0deg); }
+  4%      { transform: rotate(5deg); }
+  12.5%   { transform: rotate(-5deg); }
+  21%     { transform: rotate(5deg); }
+  29%     { transform: rotate(-5deg); }
+  37.5%   { transform: rotate(5deg); }
+  46%     { transform: rotate(-5deg); }
+  50%,to  { transform: rotate(0deg); }
 }
