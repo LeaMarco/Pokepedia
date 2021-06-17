@@ -11,85 +11,86 @@ export default function Home() {
   const dispatch = useDispatch();
   let pokemons = useSelector((state) => state.pokemons);
   const [search, setSearch] = useState("")
-  console.log(pokemons, "POKEMONS////////////////////////////////////////////////")
   
+  useEffect(() => {
+      dispatch(findPokemons());
+    }, []);
 
-  ///////////////////CAMBIO DE PAGINAS TRAYENDO "TODO" DE LA API////////////
-  // const [currentPage, setCurrentPage] = useState(0) 
 
-  // var previousPage=()=>{
-  //   if(currentPage>0){
-  //     setCurrentPage(currentPage-12)
+  // console.log(pokemons[1], "POKEMONS////////////////////////////////////////////////")
+  if(pokemons)var lastPage= pokemons[1]
 
-  //   }
-  // }
-  // var nextPage=()=>{
-  //   if(filteredPokemons().length>5){
-  //     setCurrentPage(currentPage+12)
-  //   }
-  // }
-
-///////////////////CAMBIO DE PAGINA CON LLAMADOS///////////
-   const [firstPokemon, setFirstPokemon] = useState(1) 
+  const [type, setType] = useState("none") 
+  const [pageNumber, setPageNumber] = useState(1) 
+  const [order, setOrder] = useState(true) 
 
   var previousPage=()=>{
-    if(firstPokemon>1){
-      setFirstPokemon(firstPokemon-12)
-      dispatch(findPokemons(firstPokemon-12))
+    if(pageNumber>1){
+      setPageNumber(pageNumber-1)
+      dispatch(findPokemons(type, pageNumber-1, order))
     }
   }
   var nextPage=()=>{
-    // console.log("entré")
-    //   pokemons= null
-    //   console.log(pokemons,"salí")
-    if(firstPokemon<1117){
-      setFirstPokemon(firstPokemon+12)
-      dispatch(findPokemons(firstPokemon+12))
+    if(pageNumber<=lastPage){
+      setPageNumber(pageNumber+1)
+      dispatch(findPokemons(type, pageNumber+1, order))
     }
   }
   var previousPageUltra=()=>{
-    if(firstPokemon>120){
-      setFirstPokemon(firstPokemon-120)
-      dispatch(findPokemons(firstPokemon-120))
-    } else {
-      setFirstPokemon(1)
-      dispatch(findPokemons(1))
+    if(pageNumber>10){
+      setPageNumber(pageNumber-10)
+      dispatch(findPokemons(type, pageNumber-10, order))
     }
   }
   var nextPageUltra=()=>{
-    if(firstPokemon<1081){
-      setFirstPokemon(firstPokemon+120)
-      dispatch(findPokemons(firstPokemon+120))
+    if(pageNumber<=lastPage-10){
+      setPageNumber(pageNumber+10)
+      dispatch(findPokemons(type, pageNumber+10, order))
     }
   }
 
-
-  useEffect(() => {
-    dispatch(findPokemons());
-  }, []);
   
-  var filteredPokemons = () => {
-    // if(search.length===0){
-    //   return pokemons.slice(currentPage, currentPage+12);
-    // } else {
-    //   const filtered= pokemons.filter(pokemon => pokemon.name.includes(search))
-    //   return filtered.slice(currentPage, currentPage+12);
-    // }
-  };
-  
-
-
-  var onSearchChange = ({target}) =>{
-    // setCurrentPage(0)
-    // setSearch(target.value)
+  var orderChange=()=>{
+    setOrder(!order)
+    dispatch(findPokemons(type, pageNumber, !order))
   }
+  console.log(order, "ORDERRR")
+
+  var filterChange=({target})=>{
+    setType(target.value)
+    dispatch(findPokemons(target.value, pageNumber, order))
+  }
+
+  
   return (
     <div>
       {Array.isArray(pokemons) ? (
         <div>
+          <button onClick={orderChange}>{order===true?"oldest ➡ newest": "newest ➡ oldest"}</button>
+          <select  onClick={filterChange} name="select">
+            <option value="none" selected>none</option>
+            <option value="7">Bug</option>
+            <option value="17">Dark</option>
+            <option value="16">Dragon</option>
+            <option value="13">Electric</option>
+            <option value="18">Fairy</option>
+            <option value="2">Fighting</option>
+            <option value="10">Fire</option>
+            <option value="3">Flying</option>
+            <option value="8">Ghost</option>
+            <option value="12">Grass</option>
+            <option value="5">Ground</option>
+            <option value="15">Ice</option>
+            <option value="1">Normal</option>
+            <option value="4">Poison</option>
+            <option value="14">Psychic</option>
+            <option value="6">Rock</option>
+            <option value="9">Steel</option>
+            <option value="11" >Water</option>
+          </select>
           <div className={styles.contenedor}>
-            {pokemons.map(({ name, types, img }) => (
-              <Card name={name} type={types} img={img} />
+            {pokemons[0].map(({ name, types, img }) => (
+              <Card name={name} type={types} img={img} key={name} />
             ))}
           </div>
           <hr/>

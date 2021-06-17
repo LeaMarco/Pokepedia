@@ -7,9 +7,14 @@ import {
 } from "./actionNames";
 import axios from 'axios'
 
-export function findPokemons(firstPokemon) {
+export function findPokemons(type,pageNumber, order) {
   return (dispatch) => {
-    axios.post("http://localhost:3001/", {params:firstPokemon?{index: firstPokemon}:{index: 1}}).then((response) => {
+    axios.post("http://localhost:3001/", 
+    {
+      type: type?type: "none", 
+      pageNumber: pageNumber? pageNumber:1,
+      order: order
+    }).then((response) => {
       dispatch({ type: FIND_POKEMON, payload: response.data });
     });
   };

@@ -3,11 +3,9 @@ import p from "./Card.module.css";
 import { Link } from "react-router-dom";
 
 
-Object.defineProperty(String.prototype, "capitalOne", {
-  value: function () {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-  },
-});
+ function capitalOne(name) {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+};
 
 export default function Card({
   name = "Charizard",
@@ -15,23 +13,9 @@ export default function Card({
   img = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg",
 }) {
   var topClass = p.topFire;
-  // switch (type[0]) {
-  //   case "fire":
-  //     console.log("ENTRE EN FIREEEE")
-  //     topClass = p.topFire;
-      
-  //   case "water":
-  //     console.log("ENTRE EN waterrrr")
-
-  //     topClass = p.topWater;
-      
-  //   case "grass":
-  //     topClass = p.topGrass;
-      
-  //   default:
-  //     topClass = p.topFire;
-      
-  // }
+  
+  // topClass=`p.top${type[0].capitalOne()}` ///////////////////////////MIRAR ESTO!!
+  // console.log(typeof (topClass))
   if (type[0]==="bug") {topClass = p.topBug;}
   if (type[0]==="dark") {topClass = p.topDark;}
   if (type[0]==="dragon") {topClass = p.topDragon;}
@@ -69,10 +53,10 @@ export default function Card({
           </div>
 
           <div className={p.datos}>
-            <h1>{name.capitalOne()}</h1>
+            <h1>{capitalOne(name)}</h1>
             <div >
               <h5 className={p.typeTitle}>{typeTitle}</h5>
-              <h3 className={p.type}>{type.join(", ")}</h3>
+              <h3 className={p.type}>{type.join(', ')}</h3>
             </div>
           </div>
 
