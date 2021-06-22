@@ -2,7 +2,7 @@ import react from "react";
 import { Route, Switch } from "react-router-dom";
 
 import home from "./components/Home";
-import landing from "./components/LandingPage"
+import Landing from "./components/LandingPage"
 import Card from "./components/Card";
 import "./App.css";
 import Create from "./components/Create";
@@ -13,12 +13,12 @@ import SearchBar from "./components/SearchBar";
 function App() {
   return (
     <div>
-        <NavBar/>
+        <Route path="/:any" component={NavBar} />
         <Route exact path="/home" component={SearchBar} />
         <Route exact path="/card" component={Card} />
         <Route exact path="/home" component={home} />
         <Route exact path="/create" component={Create} />
-        <Route exact path="/" component={landing} />
+        <Route exact path="/" component={Landing} />
         <Route path="/pokemons/:id" component={pokemonDetail}/>
     </div>
   );

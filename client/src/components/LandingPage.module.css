@@ -1,11 +1,38 @@
 .background {
-  background-image: url("https://cdn.wallpapersafari.com/28/80/8jBNd2.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
   position: relative;
   width: 100vw;
   overflow: hidden;
+  background: linear-gradient(270deg, #5fcbaf, #a876d5, #48c6cf, #507de0);
+  background-size: 800% 800%;
+
+  -webkit-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .background a {
@@ -25,3 +52,32 @@
   transition: 400ms;
   transform: scale(1.1);
 }
+
+.logo {
+  width: 35%;
+  position: relative;
+  margin-top: 15%;
+  margin-left: 30%;
+
+  transform: translatey(0px);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    -webkit-filter: drop-shadow(50px 5px 5px rgba(34, 34, 34, 0.6));
+    filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.6));
+    transform: translatey(0px);
+  }
+  50% {
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.6));
+    filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.2));
+    transform: translatey(-20px);
+  }
+  100% {
+    -webkit-filter: drop-shadow(50px 5px 5px rgba(34, 34, 34, 0.6));
+    filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.6));
+    transform: translatey(0px);
+  }
+}
+

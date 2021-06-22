@@ -56,3 +56,5 @@ export function clearPokemon() {
     {type: CLEAR_POKEMON}
   );
 }
+
+

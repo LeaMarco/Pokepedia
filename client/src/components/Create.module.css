@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
+
+.inputsContainer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+}
+
+.Container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Abel', sans-serif;
+
+}
+
+.form {
+    margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button {
+  margin-top: 20px;
+  margin-bottom: -20px;
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #4eb5f1;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  background-color: #4095c6;
+}
+@media all and (max-width: 30em) {
+  .button {
+    display: block;
+    margin: 0.2em auto;
+  }
+}
+
+.checkBox {
+  margin-bottom: 20px;
+}
+
+.inputs{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    border-color: ivory;
+}

@@ -5,14 +5,13 @@ import { Link } from "react-router-dom";
 import CardsContainer from "./CardsContainer";
 import store from "../store";
 import Card from "./Card";
-import styles from "./Home.module.css";
+import styles from "./SearchBar.module.css";
 import Spinner from "./Loader";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
   const pokemons = useSelector((state) => state.pokemons);
   const [search, setSearch] = useState("")
-  console.log(search, "POKEMONS////////////////////////////////////////////////")
   
   const handleSubmit= (e)=>{
     e.preventDefault();
@@ -25,9 +24,12 @@ export default function SearchBar() {
   }
 
   return (
+    <div className={styles.SearchBar}>
     <form onSubmit={(e)=>handleSubmit(e)}>
           <input type="text" placeholder="buscar pokemon" value= {search} onChange={onSearchChange}></input> 
           <button  type="submit">BUSCAR</button>
     </form>
+
+    </div>
   );
 }

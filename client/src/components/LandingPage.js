@@ -6,9 +6,11 @@ function Landing() {
   return (
     <div className={styles.background}>
       <Link to="/home">
-        <h1 className={styles.holi} >
-          Entrar
-        </h1>
+      <img
+        className={styles.logo}
+        src="https://res.cloudinary.com/nsnc/image/upload/v1623998504/logoPokepedia_copy_wqoep6.png"
+      ></img>
+        <h1 className={styles.holi}>Entrar</h1>
       </Link>
     </div>
   );
