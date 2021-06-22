@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
   let pokemons = [];
   let pokemonsUrls = [];
   let PokemonsFromDb= [];
-  const { type, order } = req.body;
+  const { type} = req.body;
 
 
 //////////CREO EL ARRAY CON LAS URLS ///////////////////
@@ -20,9 +20,8 @@ router.post("/", async (req, res) => {
   }} else {
     allTypeProperties= await axios.get(`https://pokeapi.co/api/v2/type/${type}`)
     pokemonsUrls= allTypeProperties.data.pokemon.map(element => element.pokemon.url)
-    pokemonsUrls.slice(1, 41) 
+    pokemonsUrls= pokemonsUrls.slice(1, 41) 
   }
-  if(order===false) {pokemonsUrls.reverse()}
   ///////////////////////////////////////////////////////
   
   var responses = await Promise.all(pokemonsUrls.map((pokemon) => axios.get(pokemon))
@@ -39,8 +38,9 @@ router.post("/", async (req, res) => {
       ;
       pokemons.push(eachPokemonDB);
   });
-  res.json(pokemons);
+  res.status(200).json(pokemons);
 });
+
 
 
 module.exports = router;

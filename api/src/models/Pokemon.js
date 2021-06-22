@@ -9,6 +9,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      primaryKey: true,
+    },
     hp: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -26,6 +31,10 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     height: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    weight: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },

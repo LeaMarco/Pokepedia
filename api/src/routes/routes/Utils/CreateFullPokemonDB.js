@@ -13,6 +13,7 @@ var pokemonDetails = {
     height: pokemon.height,
     weight: pokemon.weight,
   }
+  console.log(pokemon)
     return pokemonDetails
 }
 }

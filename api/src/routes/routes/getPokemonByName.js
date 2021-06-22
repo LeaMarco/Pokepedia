@@ -12,13 +12,13 @@ router.get("/", async (req, res) => {
   try {
     pokemonApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
     pokemon= createFullPokemon(pokemonApi);
-    res.json(pokemon);
+    res.status(200).json(pokemon);
   } catch (error) {
       pokemonDb = await Pokemon.findOne({where: { name: name }});
       if (pokemonDb === null) {
         return res.status(404).send("pokemon no encontrado");
       } else {
-        res.json(pokemonDb);
+        res.status(200).json(pokemonDb);
       };
   }
   
