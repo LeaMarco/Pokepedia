@@ -5,7 +5,7 @@ module.exports={ createFullPokemon:  (pokemon)=>{
     var imgFrontDefault = pokemon.data.sprites.front_default
 
 var pokemonDetails = {
-    img: imgDreamWorld? imgDreamWorld : imgOfficial ? imgOfficial : imgFrontDefault,
+    img: imgDreamWorld ? imgDreamWorld : imgOfficial ? imgOfficial : imgFrontDefault,
     name: pokemon.data.name,
     types: pokemon.data.types.map((element) => element.type.name),
     id: pokemon.data.id,
