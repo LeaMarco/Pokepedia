@@ -26,14 +26,14 @@ server.use(morgan('dev'));
 // });
 server.use('/', express.static(path.join(__dirname, '/')));
 
-server.use(
-	cors({
-		origin: process.env.HOST_FRONT,
-		credentials: false,
-		methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
-		allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
-	})
-);
+// server.use(
+// 	cors({
+// 		origin: process.env.HOST_FRONT,
+// 		credentials: false,
+// 		methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
+// 		allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
+// 	})
+// );
 
 server.use('/', routes);
 
