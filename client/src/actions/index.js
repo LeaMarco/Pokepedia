@@ -23,7 +23,7 @@ export function findPokemons(type,pageNumber, order) {
 export function findPokemonsById(payload) {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3001/pokemon/${payload}`)
+      .get(`${process.env.REACT_APP_HOST_BACKEND}/pokemon/${payload}`)
       .then((response) => {
         dispatch({ type: FIND_POKEMONS_BY_ID, payload: response.data }); ////////////////OJO CON ESTO
       })
@@ -34,7 +34,7 @@ export function findPokemonsById(payload) {
 export function findPokemonsByName(payload) {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3001/?name=${payload}`)
+      .get(`${process.env.REACT_APP_HOST_BACKEND}/?name=${payload}`)
       .then((response) => {
         dispatch({ type: FIND_POKEMONS_BY_NAME, payload: response.data }); ////////////////OJO CON ESTO
       })
@@ -45,7 +45,7 @@ export function findPokemonsByName(payload) {
 export function createPokemon(payload) {
   return (dispatch) => {
     axios
-      .post("http://localhost:3001/create", payload)
+      .post(`${process.env.REACT_APP_HOST_BACKEND}/create`, payload)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };
