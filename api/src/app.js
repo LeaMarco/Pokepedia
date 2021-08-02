@@ -11,29 +11,32 @@ const server = express();
 
 server.name = 'API';
 
-server.use(cors())
+// server.use(cors())
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' }));
 server.use(express.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan('dev'));
-// server.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', process.env.HOST_FRONT); // update to match the domain you will make the request from
-//   res.header('Access-Control-Allow-Credentials', 'true');
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-//   next();
-// });
-server.use('/', express.static(path.join(__dirname, '/')));
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', process.env.HOST_FRONT); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  next();
+});
 
-server.use(
-	cors({
-		origin: "https://pokepedia-lac.vercel.app/home",
-		credentials: false,
-		methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
-		allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
-	})
-);
+
+
+// server.use('/', express.static(path.join(__dirname, '/')));
+
+// server.use(
+// 	cors({
+// 		origin: process.env.HOST_FRONT,
+// 		credentials: false,
+// 		methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
+// 		allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
+// 	})
+// );
 
 server.use('/', routes);
 
