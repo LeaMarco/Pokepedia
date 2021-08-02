@@ -9,7 +9,7 @@ import axios from 'axios'
 
 export function findPokemons(type,pageNumber, order) {
   return (dispatch) => {
-    axios.post("http://localhost:3001/", 
+    axios.post(`${process.env.REACT_APP_HOST_BACKEND}`, 
     {
       type: type?type: "none", 
       pageNumber: pageNumber? pageNumber:1,

@@ -47,7 +47,7 @@ export default function Create() {
       [name]: checked,
     });
   };
-
+  
   function handleSubmit(e) {
     if (selectedTypes.length < 1) {
       alert("Chose at least one type");
@@ -56,7 +56,7 @@ export default function Create() {
       e.preventDefault();
       setpokemonData((pokemonData.types = selectedTypes));
       axios
-        .post("http://localhost:3001/create", pokemonData)
+        .post(`${process.env.REACT_APP_HOST_BACKEND}/create`, pokemonData)
         .then((response) => {
           alert(response.data);
         });
