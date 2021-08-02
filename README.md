@@ -13,7 +13,7 @@
 - Aprender y practicar el workflow de GIT.
 - Usar y practicar testing.
 
-#### Tecnologías necesarias:
+#### Tecnologías aplicadas:
 - [ ] React
 - [ ] Redux
 - [ ] Express
