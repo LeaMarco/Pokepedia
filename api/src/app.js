@@ -24,14 +24,14 @@ server.use(morgan('dev'));
 //   next();
 // });
 
-// app.use(
-// 	cors({
-// 		origin: process.env.HOST_FRONT,
-// 		credentials: false,
-// 		methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
-// 		allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
-// 	})
-// );
+app.use(
+	cors({
+		origin: process.env.HOST_FRONT,
+		credentials: false,
+		methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
+		allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
+	})
+);
 
 server.use('/', routes);
 
