@@ -182,7 +182,7 @@ export default function Create() {
             </label>
           ))}
         </div>
-
+            <textarea placeholder="descripcion" className="styles.description"></textarea>
         <button type="submit" className={styles.button}>
           Create!
         </button>
