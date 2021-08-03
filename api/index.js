@@ -11,7 +11,7 @@ const getTypes=()=>{
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => { getTypes(),
+  server.listen(process.env.PORT||3001, () => { getTypes(),
     console.log('listening at 3001'); // eslint-disable-line no-console
   });
 });
