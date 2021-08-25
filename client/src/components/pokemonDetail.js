@@ -25,6 +25,8 @@ export default function PokemonDetail() {
     };
   }, []);
 
+
+  console.log(pokemon, "INFO DEL POKEMON!")
   var imgAnimation = styles.imgStill;
   if (pokemon.img === pokeballImg) imgAnimation = styles.imgMovement;
 

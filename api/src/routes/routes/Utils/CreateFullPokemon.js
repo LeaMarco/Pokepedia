@@ -3,7 +3,7 @@ module.exports={ createFullPokemon:  (pokemon)=>{
     var imgDreamWorld = pokemon.data.sprites.other.dream_world.front_default
     var imgOfficial =  pokemon.data.sprites.other['official-artwork'].front_default
     var imgFrontDefault = pokemon.data.sprites.front_default
-
+    console.log(pokemon, "DATA DEL POLEMON EN EL BACK!")
 var pokemonDetails = {
     img: imgDreamWorld ? imgDreamWorld : imgOfficial ? imgOfficial : imgFrontDefault,
     name: pokemon.data.name,
