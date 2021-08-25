@@ -129,7 +129,7 @@ export default function Home() {
           <div className={styles.contenedor}>
               <Card id={pokemons.id} name={pokemons.name} type={pokemons.types} img={pokemons.img} />
           </div>
-          <button onClick={returnHome} className={styles.button} style={{ marginLeft: "12%", marginTop:"2rem" }}>Return!</button>
+          <button onClick={returnHome} className={styles.return} >Return!</button>
 
         </div>
 
