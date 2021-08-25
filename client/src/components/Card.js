@@ -10,9 +10,6 @@ function capitalOne(name) {
 
 export default function Card({ name, type, img, id}) {
   var topClass = p.topFire;
-console.log(id, "IDDDD")
-  // topClass=`p.top${type[0].capitalOne()}` ///////////////////////////MIRAR ESTO!!
-  // console.log(typeof (topClass))
   if (type[0] === "bug") {
     topClass = p.topBug;
   }

@@ -47,7 +47,6 @@ export default function Home() {
     setSortType(target.value)
   };
   
-  console.log(typeof pokemons, pokemons, "POKEEEEMOSSSS")
   let sortedPokemons
   if(pokemons!==undefined && pokemons.length>1){
      sortedPokemons= pokemons.sort((a,b)=>{
