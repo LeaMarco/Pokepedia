@@ -81,3 +81,11 @@
   }
 }
 
+@media all and (max-width: 500px){
+  .logo{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50%;
+  }
+}
+

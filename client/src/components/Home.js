@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { findPokemons } from "../actions/index";
+import { clearPokemon, findPokemons } from "../actions/index";
 import Card from "./Card";
 import styles from "./Home.module.css";
 import Spinner from "./Loader";
@@ -19,6 +19,7 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(0) 
 
   const returnHome=()=>{
+    dispatch(clearPokemon())
     dispatch(findPokemons(type))
   }
   
@@ -38,6 +39,7 @@ export default function Home() {
   
   
   var filterChange=({target})=>{
+    dispatch(clearPokemon())
     setType(target.value)
     dispatch(findPokemons(target.value))
   }
@@ -74,11 +76,9 @@ export default function Home() {
  
   return (
     <div>
-      {Array.isArray(pokemons) ? (
-        <div>
-        <div className={styles.filters}>
-          <select  onClick={filterChange} name="select">
-            <option defaultValue="none">none</option>
+      <div className={styles.filters}>
+          <select  onChange={filterChange} name="select">
+            <option value="none">All Types</option>
             <option value="bug">Bug</option>
             <option value="dark">Dark</option>
             <option value="dragon">Dragon</option>
@@ -109,7 +109,8 @@ export default function Home() {
             <option value="za">Order by name Z→A</option>
           </select>
         </div>
-          
+      {Array.isArray(pokemons) ? (
+        <div>    
           <div className={styles.contenedor}>
             {filteredPokemons().map(({ name, types, img, id }) => (
               <Card id={id} name={name} type={types} img={img} key={Math.random()} />
@@ -125,10 +126,10 @@ export default function Home() {
         </div>
       )  : typeof pokemons === 'object'? (
         <div>
-          <button onClick={returnHome} className={styles.button} style={{ marginLeft: "12%", marginTop:"2rem" }}>Return!</button>
           <div className={styles.contenedor}>
               <Card id={pokemons.id} name={pokemons.name} type={pokemons.types} img={pokemons.img} />
           </div>
+          <button onClick={returnHome} className={styles.button} style={{ marginLeft: "12%", marginTop:"2rem" }}>Return!</button>
 
         </div>
 

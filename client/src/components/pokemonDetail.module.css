@@ -25,6 +25,12 @@
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
 }
+.topPsychic {
+  background-image: var(--psychic);
+  height: 50px;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
 .topGround {
   background-image: var(--ground);
   height: 50px;
@@ -1180,4 +1186,28 @@
     margin-top: -2.5rem;
     margin-left: 10%;
   font-size: 2rem;
+}
+
+
+@media all and (max-width: 500px){
+  .container{
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 10%;
+    
+  }
+  .imgStill{
+    position: inherit;
+    margin-left: 15%;
+  }
+  .datos{
+    margin-left: 0%;
+  }
+  .stats{
+    margin-left: 0%
+  }
+
 }

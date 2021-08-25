@@ -25,6 +25,12 @@
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
 }
+.topPsychic {
+  background-image: var(--psychic);
+  height: 50px;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
 .topGround {
   background-image: var(--ground);
   height: 50px;

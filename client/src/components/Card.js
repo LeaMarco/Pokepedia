@@ -52,7 +52,7 @@ export default function Card({ name, type, img, id}) {
   if (type[0] === "poison") {
     topClass = p.topPoison;
   }
-  if (type[0] === "Psychic") {
+  if (type[0] === "psychic") {
     topClass = p.topPsychic;
   }
   if (type[0] === "rock") {

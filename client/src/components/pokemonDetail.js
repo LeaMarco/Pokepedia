@@ -27,9 +27,9 @@ export default function PokemonDetail() {
 
 
   var imgAnimation = styles.imgStill;
-  if (pokemon.img === pokeballImg) imgAnimation = styles.imgMovement;
+  if (pokemon?.img === pokeballImg) imgAnimation = styles.imgMovement;
 
-  return pokemon.types ? (
+  return pokemon?.types ? (
     <div className={styles.container}>
       <div className={topSelector(pokemon.types)}></div>
       <img

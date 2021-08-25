@@ -44,7 +44,7 @@ export default function topSelector(type){
       if (type[0] === "poison") {
         topClass = styles.topPoison;
       }
-      if (type[0] === "Psychic") {
+      if (type[0] === "psychic") {
         topClass = styles.topPsychic;
       }
       if (type[0] === "rock") {

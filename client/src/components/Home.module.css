@@ -5,54 +5,69 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 25px;
+  justify-items: center;
 }
 
-.loading{
+.loading {
   position: absolute;
   margin-top: 20%;
   margin-left: 50%;
 }
 
-.pagination{
-  margin-left: 40%;
+.pagination {
   display: flex;
   width: 100%;
-  height: 2rem;
-  justify-content: space-evenly;
+  height: 8vh;
+  justify-content: center;
   align-items: center;
 }
 
-.button{
-  display:inline-block;
-  padding:0.3em 1.2em;
-  margin:0 0.3em 0.3em 0;
-  border-radius:2em;
+.button {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
   box-sizing: border-box;
-  text-decoration:none;
-  font-family:'Roboto',sans-serif;
-  font-weight:300;
-  color:#FFFFFF;
-  background-color:#4eb5f1;
-  text-align:center;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #4eb5f1;
+  text-align: center;
   transition: all 0.2s;
-    }
-  
-    .button:hover{
-  background-color:#4095c6;
-    }
-  @media all and (max-width:30em){
-  .button{
-  display:block;
-  margin:0.2em auto;
-  }
-  }
+}
 
-  .filters{
-    margin-top: 2rem;
-    margin-left: 12%;
+.button:hover {
+  background-color: #4095c6;
+}
+@media all and (max-width: 30em) {
+  .button {
+    display: block;
+    margin: 0.2em auto;
   }
+}
 
-  .return{
-    margin-top: 2rem;
-    margin-left: 12%;
+.filters {
+  margin-top: 2rem;
+  margin-left: 12%;
+}
+
+.return {
+  margin-top: 2rem;
+  margin-left: 12%;
+}
+
+.contenedorBusqueda{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media all and (max-width: 500px) {
+  .contenedor {
+    margin-left: 7.5%;
   }
+  .button {
+    margin-left: auto;
+  }
+}

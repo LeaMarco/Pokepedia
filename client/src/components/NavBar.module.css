@@ -36,4 +36,15 @@ margin:0.2em auto;
 
 .NavBar{
   height: 15rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media all and (max-width:500px){
+  .logo{
+  width: 80%;
+  }
+  .NavBar{
+    height: 100%;
+  }
 }
