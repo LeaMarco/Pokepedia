@@ -9,6 +9,8 @@ import Create from "./components/Create";
 import NavBar from "./components/NavBar";
 import pokemonDetail from "./components/pokemonDetail";
 import SearchBar from "./components/SearchBar";
+import Footer from "./components/Footer";
+
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route exact path="/create" component={Create} />
         <Route exact path="/" component={Landing} />
         <Route path="/pokemons/:id" component={pokemonDetail}/>
+        {/* <Route path="/:any" component={Footer} /> */}
+
     </div>
   );
 }

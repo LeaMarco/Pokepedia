@@ -1,0 +1,6 @@
+.footerContainer{
+    margin-left: 10%;
+    width: 80%;
+    height: 10rem;
+    background-image: radial-gradient(circle at bottom center, rgb(87, 232, 245),rgb(42, 114, 213));
+}

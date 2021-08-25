@@ -1,7 +1,7 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { findPokemonsById } from "../actions/index";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { clearPokemon } from "../actions/index";
 import styles from "./pokemonDetail.module.css";
 import Spinner from "./Loader";
@@ -30,6 +30,7 @@ export default function PokemonDetail() {
   if (pokemon?.img === pokeballImg) imgAnimation = styles.imgMovement;
 
   return pokemon?.types ? (
+    <div>
     <div className={styles.container}>
       <div className={topSelector(pokemon.types)}></div>
       <img
@@ -52,7 +53,10 @@ export default function PokemonDetail() {
           <h5>Id: {pokemon.id}</h5>
         </div>
       </div>
+
     </div>
+      <Link className={styles.return} to="/Home">Return!</Link>
+      </div>
   ) : (
     <div className={styles.loading}>
       <Spinner />

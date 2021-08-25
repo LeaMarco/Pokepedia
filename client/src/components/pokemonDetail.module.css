@@ -1188,6 +1188,26 @@
   font-size: 2rem;
 }
 
+.return {
+  margin-left: 46%;
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin-top: 5%;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #4eb5f1;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.return:hover {
+  background-color: #4095c6;
+  cursor: pointer;
+}
 
 @media all and (max-width: 500px){
   .container{
@@ -1208,6 +1228,11 @@
   }
   .stats{
     margin-left: 0%
+  }
+  .return{
+    margin-top: 2%;
+    margin-bottom: 10%;
+    margin-left: 40%;
   }
 
 }
